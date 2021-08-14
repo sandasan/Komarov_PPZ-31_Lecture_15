@@ -13,7 +13,8 @@ public class Account {
         this.password = password;
     }
 
-    public void takeMoney(String login, long password, int sum) {
+    // Синхронизируем метод для обеспечения единовременного доступа к нему только одного потока
+    /*public synchronized void takeMoney(String login, long password, int sum) {
         if (!checkPassAndLogin(login, password)) {
             System.out.println("Wrong login or password");
             return;
@@ -25,7 +26,30 @@ public class Account {
         transaction();
         changeBalance(sum);
         System.out.println(this);
+    }*/
+    public synchronized void takeMoney(String login, long password, int sum) {
+        // Использование для синхронизации оператора "synchronized". Синхронизируется текущий объект (this). Можно применять, если нет возможности написать синхронизированный метод, либо нет доступа к исходному коду метода
+        synchronized (this) {
+            if (!checkPassAndLogin(login, password)) {
+                System.out.println("Wrong login or password");
+                return;
+            }
+            if (!checkMoney(sum)) {
+                System.out.println("You don't have such money sum");
+                return;
+            }
+            transaction();
+            changeBalance(sum);
+            System.out.println(this);
+        }
     }
+    /*
+    Какой подход когда использовать
+    В общем случае результат работы обеих подходов будет одинаковым.
+
+    Если вы пишете приложение, которое точно будет работать в многопоточном режиме, то лучше использовать синхронизированные методы.
+    Если приложение напосано не вами и нельзя модифицировать исходный код, либо при написании приложения оно не было рассчитано на многопоточное выполнение, тогда следует использовать оператор synchronized.
+     */
 
     // Методы проверок и снятия денег. Метод transaction() специально задерживает основной поток, имитируя долгую работу
     private boolean checkPassAndLogin(String login, long password) {
