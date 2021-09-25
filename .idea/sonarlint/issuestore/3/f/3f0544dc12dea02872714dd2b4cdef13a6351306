@@ -1,0 +1,17 @@
+
+<
+java:S1659	"&Declare "fileName" on a separate line.(«ëïÛ
+i
+java:S1450"SRemove the "stop" field and declare it as a local variable in the relevant methods.(ðÚì°
+\
+java:S1854"?Remove this useless assignment to local variable "startingDir".(ûýÖÉ8¶ì¯Ì¸/
+Ž
+java:S1130"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(ÿùÏÞüÿÿÿÿ8¶ì¯Ì¸/
+M
+java:S1481"0Remove this unused "startingDir" local variable.(ûýÖÉ8·ì¯Ì¸/
+X	java:S125 "<This block of commented-out lines of code should be removed.(—âûÃ8·ì¯Ì¸/
+M
+java:S1128"0Remove this unused import 'java.nio.file.Files'.(‚ƒü8¸ì¯Ì¸/
+>
+java:S1068"(Remove this unused "stop" private field.(ðÚì°
+n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Õ “[
